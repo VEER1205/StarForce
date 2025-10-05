@@ -19,4 +19,4 @@ async def read_contests(request: Request):
 
 @router.get("/problems", response_class=HTMLResponse)
 async def read_problems(request: Request):  
-    return templates.TemplateResponse("problems.html", {"request": request})
+    return templates.TemplateResponse("problem.html", {"request": request})

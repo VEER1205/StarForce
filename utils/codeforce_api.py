@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime
+from datetime import datetime,timezone,timedelta
 
 API_URL = "https://codeforces.com/api/"
 
@@ -80,8 +80,10 @@ def getAllContests():
     return None
 
 
+
 def convert_unix_to_readable(unix_timestamp):
-    return datetime.fromtimestamp(unix_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+    IST = timezone(timedelta(hours=5, minutes=30))
+    return datetime.fromtimestamp(unix_timestamp, tz=IST).strftime("%Y-%m-%d %I:%M:%S %p")
 
 def getAllProblems():
     response = requests.get(f"{API_URL}problemset.problems")
