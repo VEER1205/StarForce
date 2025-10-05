@@ -6,8 +6,8 @@ async function loadProblems(tag = null) {
 
   try {
     const endpoint = tag
-      ? `${backendBase}/problemsbytag/${encodeURIComponent(tag)}`
-      : `${backendBase}/allproblems/`;
+      ? `${backendBase}/api/problemsbytag/${encodeURIComponent(tag)}`
+      : `${backendBase}/api/allproblems/`;
 
     const response = await fetch(endpoint);
     const data = await response.json();
