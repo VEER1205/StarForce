@@ -5,10 +5,15 @@ from utils import codeforce_api
 router = APIRouter()
 
 @router.get("/user/{handle}")
-async def get_user_data(handle: str):
-    user_stats = codeforce_api.get_user_stats(handle)
+async def getUserData(handle: str):
+    user_stats = codeforce_api.getUserStats(handle)
     return user_stats
 
-@router.get("/compare/{user1}/{user2}")
-async def compare_ratings(user1: str, user2: str): 
-    return codeforce_api.compare_ratings(user1, user2)
+@router.get("/compare/")
+async def compareRatings(user1: str, user2: str): 
+    return codeforce_api.compareRatings(user1, user2)
+
+@router.get("/contests/")
+async def listContests():
+    contests = codeforce_api.getAllContests()
+    return contests
