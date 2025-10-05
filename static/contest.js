@@ -33,7 +33,7 @@
     async function fetchContests() {
       const container = document.getElementById("contest-container");
       try {
-        const res = await fetch("https://starforce.onrender.com/contests/");
+        const res = await fetch("https://starforce.onrender.com/api/contests/");
         const data = await res.json();
 
         if (!Array.isArray(data)) {

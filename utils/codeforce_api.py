@@ -87,4 +87,4 @@ def getAllContests():
 
 
 def convert_unix_to_readable(unix_timestamp):
-    return datetime.fromtimestamp(unix_timestamp)
+    return datetime.fromtimestamp(unix_timestamp).strftime("%Y-%m-%d %H:%M:%S")
