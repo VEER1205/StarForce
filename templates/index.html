@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Codeforces Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/index.css" />
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <nav>
+    <div class="logo">StarForce</div>
+    <ul>
+      <li><a href="/" class="active">Dashboard</a></li>
+      <li><a href="/compare">Compare</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="hero-section">
+      <h1>Track Your <span>Progress</span></h1>
+      <p>Analyze your competitive programming journey with beautiful insights</p>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="handleInput" placeholder="Enter your Codeforces handle" />
+      <button onclick="loadUserData()">Analyze</button>
+    </div>
+
+    <div id="loadingMsg" class="loading" style="display: none;">
+      Loading your stats
+    </div>
+
+    <div id="errorMsg" class="error" style="display: none;"></div>
+
+    <div id="userInfo">
+      <div class="user-header">
+        <div class="user-avatar" id="userAvatar"></div>
+        <div class="user-details">
+          <h3 id="userName"></h3>
+          <p id="userRank"></p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="statRating">0</div>
+          <div class="stat-label">Current Rating</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statMaxRating">0</div>
+          <div class="stat-label">Peak Rating</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statProblems">0</div>
+          <div class="stat-label">Problems Solved</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statContests">0</div>
+          <div class="stat-label">Contests</div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <h3 class="chart-title">Rating Journey</h3>
+        <canvas id="statsChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/index.js"></script>
+</body>
+</html>

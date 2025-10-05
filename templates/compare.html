@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compare Users - Codeforces</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/static/compare.css" />
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <nav>
+    <div class="logo">⚡ CF Analytics</div>
+    <ul>
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="#" class="active">Compare</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="hero-section">
+      <h1>Compare <span>Users</span></h1>
+      <p>See how you stack up against other competitive programmers</p>
+    </div>
+
+    <div class="input-section">
+      <div class="user-input-card">
+        <h3>First User</h3>
+        <input type="text" id="handle1" placeholder="Enter first handle" />
+      </div>
+      <div class="user-input-card user2">
+        <h3>Second User</h3>
+        <input type="text" id="handle2" placeholder="Enter second handle" />
+      </div>
+    </div>
+
+    <div class="compare-button">
+      <button onclick="compareUsers()">Compare Now</button>
+    </div>
+
+    <div id="loadingMsg" class="loading" style="display: none;">
+      Analyzing and comparing users
+    </div>
+
+    <div id="errorMsg" class="error" style="display: none;"></div>
+
+    <div id="comparison">
+      <div class="comparison-grid" style="position: relative;">
+        <div class="vs-badge">VS</div>
+        <div class="user-card" id="user1Card">
+          <div class="user-header-small">
+            <div class="user-avatar-small" id="avatar1"></div>
+            <div class="user-info">
+              <h4 id="name1"></h4>
+              <p id="rank1"></p>
+            </div>
+          </div>
+          <div class="stats-mini">
+            <div class="stat-mini">
+              <div class="value" id="rating1">0</div>
+              <div class="label">Rating</div>
+            </div>
+            <div class="stat-mini">
+              <div class="value" id="maxRating1">0</div>
+              <div class="label">Max Rating</div>
+            </div>
+            <div class="stat-mini">
+              <div class="value" id="problems1">0</div>
+              <div class="label">Problems</div>
+            </div>
+            <div class="stat-mini">
+              <div class="value" id="contests1">0</div>
+              <div class="label">Contests</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="user-card user2" id="user2Card">
+          <div class="user-header-small">
+            <div class="user-avatar-small" id="avatar2"></div>
+            <div class="user-info">
+              <h4 id="name2"></h4>
+              <p id="rank2"></p>
+            </div>
+          </div>
+          <div class="stats-mini">
+            <div class="stat-mini">
+              <div class="value" id="rating2">0</div>
+              <div class="label">Rating</div>
+            </div>
+            <div class="stat-mini">
+              <div class="value" id="maxRating2">0</div>
+              <div class="label">Max Rating</div>
+            </div>
+            <div class="stat-mini">
+              <div class="value" id="problems2">0</div>
+              <div class="label">Problems</div>
+            </div>
+            <div class="stat-mini">
+              <div class="value" id="contests2">0</div>
+              <div class="label">Contests</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-section">
+        <div class="chart-card">
+          <h3>Rating Comparison</h3>
+          <canvas id="ratingChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Performance Metrics</h3>
+          <canvas id="metricsChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/static/compare.js"></script>
+</body>
+</html>
