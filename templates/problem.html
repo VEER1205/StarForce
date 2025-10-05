@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StarForce | Problems</title>
+    <link rel="stylesheet" href="/static/problems.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Star<span>Force</span></div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/compare">Compare</a></li>
+        <li><a href="/problems" class="active">Problems</a></li>
+      </ul>
+    </nav>
+
+    <div class="stars"></div>
+
+    <section class="content">
+      <h1 class="title">Explore <span>Problems</span></h1>
+      <p class="subtitle">Browse Codeforces problems by difficulty and tags</p>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search problems by name or tag..."
+        />
+      </div>
+      <div class="filter-box">
+        <select id="tagFilter">
+          <option value="">All Tags</option>
+          <option value="dp">Dynamic Programming</option>
+          <option value="greedy">Greedy</option>
+          <option value="math">Math</option>
+          <option value="graphs">Graphs</option>
+          <option value="implementation">Implementation</option>
+          <option value="strings">Strings</option>
+        </select>
+      </div>
+
+      <div class="problems-container">
+        <table id="problemsTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Rating</th>
+              <th>Tags</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody id="problemsBody">
+            <tr>
+              <td colspan="4" style="text-align: center">
+                Loading problems...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <script src="/static/problems.js"></script>
+  </body>
+</html>

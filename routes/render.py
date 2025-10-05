@@ -16,3 +16,7 @@ async def read_compare(request: Request):
 @router.get("/contests", response_class=HTMLResponse)
 async def read_contests(request: Request):
     return templates.TemplateResponse("contest.html", {"request": request})
+
+@router.get("/problems", response_class=HTMLResponse)
+async def read_problems(request: Request):  
+    return templates.TemplateResponse("problems.html", {"request": request})

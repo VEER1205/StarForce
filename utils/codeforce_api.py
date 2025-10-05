@@ -11,9 +11,7 @@ def getUserStats(handle):
     user_info_data = user_info_res.json()
     if user_info_data["status"] != "OK":
         return {"error": "User not found"}
-
     user_info = user_info_data["result"][0]
-
     # 2️⃣ Rating history (last 10 contests)
     rating_res = requests.get(f"{API_URL}user.rating", params={"handle": handle})
     rating_res.raise_for_status()
@@ -50,16 +48,12 @@ def getUserStats(handle):
         "problemsSolved": solved_count
     }
 
-
 def compareRatings(user1, user2):
     user1_stats = getUserRating(user1)
     user2_stats = getUserRating(user2)
-
     if not user1_stats or not user2_stats:
         return {"error": "One or both users not found"}
-
     return {"user1": user1_stats, "user2": user2_stats}
-
 
 def getUserRating(handle):
     try:
@@ -78,7 +72,7 @@ def getAllContests():
     if response.status_code == 200:
         data = response.json()
         if data["status"] == "OK":
-            contests_before = [contest for contest in data["result"] if contest["phase"] == "BEFORE"]
+            contests_before = data["result"]
             for contest in contests_before:
                 contest["startTimeSeconds"] = convert_unix_to_readable(contest["startTimeSeconds"])
                 contest["duration"] = contest["durationSeconds"] // 60
@@ -88,3 +82,20 @@ def getAllContests():
 
 def convert_unix_to_readable(unix_timestamp):
     return datetime.fromtimestamp(unix_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+def getAllProblems():
+    response = requests.get(f"{API_URL}problemset.problems")
+    if response.status_code == 200:
+        data = response.json()
+        if data["status"] == "OK":
+            return data["result"]["problems"]
+    return None
+
+def getProblemByTag(tag):
+    response = requests.get(f"{API_URL}problemset.problems?tags={tag}")
+    if response.status_code == 200:
+        data = response.json()
+        if data["status"] == "OK":
+            return data["result"]["problems"]
+    return None
+
