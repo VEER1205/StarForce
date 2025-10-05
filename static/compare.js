@@ -20,7 +20,7 @@
     let metricsChart = null;
 
     async function fetchUserData(handle) {
-      const res = await fetch(`http://127.0.0.1:8000/api/user/${handle}`);
+      const res = await fetch(`api/user/${handle}`);
       if (!res.ok) throw new Error(`User '${handle}' not found`);
       return await res.json();
     }

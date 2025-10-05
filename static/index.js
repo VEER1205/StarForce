@@ -19,7 +19,7 @@
     let statsChart = null;
 
     async function fetchUserData(handle) {
-      const res = await fetch(`http://127.0.0.1:8000/api/user/${handle}`);
+      const res = await fetch(`https://starforce.onrender.com/api/user/${handle}`);
       if (!res.ok) throw new Error('User not found or API error');
       return await res.json();
     }
