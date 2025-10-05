@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarForce | Contests</title>
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/static/contest.css" />
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <nav>
+    <div class="logo">StarForce</div>
+    <div class="nav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="/compare.html">Compare</a>
+      <a href="/contests.html" class="active">Contests</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Upcoming <span>Codeforces Contests</span></h1>
+    <p>Stay ready for the next challenge — plan your journey ahead.</p>
+  </header>
+
+  <div class="container" id="contest-container">
+    <div class="loading">Loading contests...</div>
+  </div>
+
+  <footer>© 2025 StarForce | Powered by Codeforces API</footer>
+
+  <script src="/static/contest.js"></script>
+</body>
+</html>

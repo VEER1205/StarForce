@@ -80,9 +80,6 @@ def getAllContests():
         if data["status"] == "OK":
             contests_before = [contest for contest in data["result"] if contest["phase"] == "BEFORE"]
             for contest in contests_before:
-                contest["relativeTimeSeconds"] = convert_unix_to_readable(
-                    contest["startTimeSeconds"] + contest["relativeTimeSeconds"]
-                )
                 contest["startTimeSeconds"] = convert_unix_to_readable(contest["startTimeSeconds"])
                 contest["duration"] = contest["durationSeconds"] // 60
             return contests_before
@@ -90,4 +87,4 @@ def getAllContests():
 
 
 def convert_unix_to_readable(unix_timestamp):
-    return datetime.fromtimestamp(unix_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+    return datetime.fromtimestamp(unix_timestamp)
