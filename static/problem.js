@@ -1,11 +1,36 @@
-const backendBase = window.location.origin;
+const backendBase = window.location.origin; // works for local & render.com
+
+// Mobile Menu Toggle
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking on a link (mobile)
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('active');
+  });
+});
+
+// Close menu when clicking outside (mobile)
+document.addEventListener('click', (e) => {
+  if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('active');
+  }
+});
 
 async function loadProblems(tag = null) {
   const tableBody = document.getElementById('problemsBody');
   tableBody.innerHTML = `<tr><td colspan="4" style="text-align:center;">Loading problems...</td></tr>`;
 
   try {
-    const endpoint = tag
+    const endpoint = tag 
       ? `${backendBase}/api/problemsbytag/${encodeURIComponent(tag)}`
       : `${backendBase}/api/allproblems/`;
 
@@ -17,11 +42,13 @@ async function loadProblems(tag = null) {
       return;
     }
 
+    // Limit for speed
     const problems = data.slice(0, 200);
+
     tableBody.innerHTML = "";
     problems.forEach(p => {
       const row = document.createElement('tr');
-      const tags = p.tags.length ? p.tags.join(', ') : '—';
+      const tags = p.tags.length > 0 ? p.tags.join(', ') : '—';
       const link = `https://codeforces.com/problemset/problem/${p.contestId}/${p.index}`;
       row.innerHTML = `
         <td>${p.name}</td>
@@ -32,25 +59,30 @@ async function loadProblems(tag = null) {
       tableBody.appendChild(row);
     });
 
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
     tableBody.innerHTML = `<tr><td colspan="4">Failed to load problems.</td></tr>`;
   }
 }
 
-// Search bar
+// Search bar filter
 document.getElementById('searchInput').addEventListener('keyup', function () {
   const filter = this.value.toLowerCase();
-  document.querySelectorAll('#problemsBody tr').forEach(row => {
+  const rows = document.querySelectorAll('#problemsBody tr');
+  rows.forEach(row => {
     const text = row.textContent.toLowerCase();
     row.style.display = text.includes(filter) ? '' : 'none';
   });
 });
 
 // Tag filter
-document.getElementById('tagFilter').addEventListener('change', e => {
-  const tag = e.target.value;
-  loadProblems(tag || null);
+document.getElementById('tagFilter').addEventListener('change', function() {
+  const selectedTag = this.value;
+  if (selectedTag) {
+    loadProblems(selectedTag);
+  } else {
+    loadProblems();
+  }
 });
 
 window.onload = () => loadProblems();

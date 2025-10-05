@@ -6,17 +6,26 @@
   <title>Codeforces Dashboard</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="/static/index.css" />
+  <link rel="stylesheet" href="/static/index.css" />
 </head>
 <body>
   <div class="stars" id="stars"></div>
 
   <nav>
     <div class="logo">StarForce</div>
-    <ul>
+    
+    <!-- Mobile Menu Toggle Button -->
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul id="navLinks">
       <li><a href="/" class="active">Home</a></li>
       <li><a href="/compare">Compare</a></li>
-        <li><a href="/contests">Contests</a></li>
+      <li><a href="/contests">Contests</a></li>
       <li><a href="/problems">Problems</a></li>
     </ul>
   </nav>
