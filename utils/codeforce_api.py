@@ -76,9 +76,8 @@ def getAllContests():
             for contest in contests_before:
                 contest["startTimeSeconds"] = convert_unix_to_readable(contest["startTimeSeconds"])
                 contest["duration"] = contest["durationSeconds"] // 60
-            return contests_before
+            return contests_before[:10]
     return None
-
 
 
 def convert_unix_to_readable(unix_timestamp):
