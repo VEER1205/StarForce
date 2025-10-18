@@ -13,7 +13,16 @@
 
   <nav>
     <div class="logo">StarForce</div>
-    <div class="nav-links">
+    
+    <!-- Mobile Menu Toggle Button -->
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" id="navLinks">
       <a href="/">Home</a>
       <a href="/compare">Compare</a>
       <a href="/contests" class="active">Contests</a>
@@ -28,6 +37,12 @@
 
   <div class="container" id="contest-container">
     <div class="loading">Loading contests...</div>
+  </div>
+
+  <div class="pagination" id="pagination" style="display: none;">
+    <button id="prevBtn">Previous</button>
+    <span class="page-info" id="pageInfo">Page 1 of 1</span>
+    <button id="nextBtn">Next</button>
   </div>
 
   <footer>© 2025 StarForce | Powered by Codeforces API</footer>
