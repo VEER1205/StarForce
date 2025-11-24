@@ -12,7 +12,6 @@ def getUserStats(handle):
     if user_info_data["status"] != "OK":
         return {"error": "User not found"}
     user_info = user_info_data["result"][0]
-    # 2️⃣ Rating history (last 10 contests)
     rating_res = requests.get(f"{API_URL}user.rating", params={"handle": handle})
     rating_res.raise_for_status()
     rating_data = rating_res.json()

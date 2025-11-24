@@ -20,4 +20,4 @@ app.add_middleware(
 
 app.include_router(render.router)
 app.include_router(cf_api.router, prefix="/api")
-
+app.api_route("/heatlth", methods=["GET","HEAD"])(lambda: {"status": "ok"})
